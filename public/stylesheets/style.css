@@ -1,0 +1,207 @@
+html::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+html {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background: url("../images/background.jpg") no-repeat fixed center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    padding: 0 !important;
+}
+
+.review-list::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+div#sendButton > i {
+    left: 95%;
+    position: relative;
+}
+
+/*      Form    */
+[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    vertical-align:middle;
+}
+
+.checkbox > label > a {
+    color: white;
+}
+
+.checkbox > label > a:hover {
+    color: orange;
+}
+
+/*  Menu   */
+#pills-tab > a {
+    font: 20pt Roboto;
+    font-weight: bolder;
+    color: white;
+}
+
+#nav-pills a {
+  color: #00B7FF;
+}
+
+.un-scrolled {
+    background-color: rgba(255, 255, 255, 0.0);
+    transition: background-color 300ms;
+}
+
+.scrolled {
+    background-color: rgba(255, 255, 255, 1);
+    transition: background-color 300ms;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.un-scrolled > a {
+    color: white !important;
+}
+
+.scrolled > a {
+    color: black !important;;
+}
+
+/*   Elements    */
+.write-form {
+    background: linear-gradient(#D0E2F244, #062F4088);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    border: 1px solid #262120;
+}
+
+.title {
+    font: 14pt Roboto;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+/*  Custom card */
+.card-title {
+    position: relative;
+    font: 14pt Roboto;
+    color: #6B7188;
+}
+
+.card-custom {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.card-details {
+    border-radius: 0px 0px 10px 10px;
+    padding: 1.5rem 0rem 1rem 1.5rem;
+}
+
+.card-comment {
+    font-family: "Microsoft Tai Le", lighter;
+    color: #6B7188;
+    padding: 1rem 2rem 0rem 2rem;
+}
+
+.card-date {
+    color: #D5D6DB;
+    font-size: 10pt;
+}
+
+.card-like {
+    font-size: 5pt;
+    color: red;
+    margin-top: 55px;
+}
+
+span.likes {
+    display: flow;
+    font-size: 11pt;
+    color: black;
+}
+/* Agreement message  */
+.modal-dialog#agreement {
+    max-width: 70% !important;
+    width: 60% !important;
+}
+
+/* Cookie message */
+.modal-dialog#cookies {
+    position: fixed !important;
+    bottom:0 !important;
+    margin:0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+.modal-dialog .modal-content {
+    border-radius: 0rem;
+}
+.modal-dialog .buttons .btn {
+    margin: 0.2rem;
+}
+
+/*    Rating    */
+#full-stars {
+    margin-top: 15px;
+    margin-bottom: -15px;
+}
+
+#full-stars .rating-group {
+    display: inline-flex;
+}
+
+#full-stars .rating__icon {
+    pointer-events: none;
+}
+#full-stars .rating__input {
+    position: absolute !important;
+    left: -9999px !important;
+}
+#full-stars .rating__label {
+    cursor: pointer;
+    padding: 0 0.1em;
+    font-size: 1.5rem;
+}
+#full-stars .rating__icon--star {
+    color: orange;
+}
+#full-stars .rating__icon--none {
+    color: #eee;
+}
+#full-stars .rating__input--none:checked + .rating__label .rating__icon--none {
+    color: red;
+}
+#full-stars .rating__input:checked ~ .rating__label .rating__icon--star {
+    color: #ddd;
+}
+#full-stars .rating-group:hover .rating__label .rating__icon--star {
+    color: orange;
+}
+#full-stars .rating__input:hover ~ .rating__label .rating__icon--star {
+    color: #ddd;
+}
+#full-stars .rating-group:hover .rating__input--none:not(:hover) + .rating__label .rating__icon--none {
+    color: #eee;
+}
+#full-stars .rating__input--none:hover + .rating__label .rating__icon--none {
+    color: red;
+}
+
+@media only screen and (max-width: 600px) {
+    .scrolled {
+        background-color: rgba(255, 255, 255, 1);
+        transition: background-color 300ms;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        margin-top: 10px;
+        width: 100%;
+    }
+}

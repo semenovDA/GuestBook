@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/animation.css')
+        script(src="jquery.js")
+        script(src="js/bootstrap.min.js")
+        link(rel="stylesheet", href="css/bootstrap.min.css")
+        link(rel="stylesheet", href="css/font-awesome.css")
+        meta(name="viewport" content="width=device-width, initial-scale=0.7")
+    body
+        block content
+        include messages/cookie
+        include messages/agreement

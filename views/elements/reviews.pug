@@ -1,0 +1,95 @@
+div.review-list
+    center.div.row
+        div.col-1.col-lg-3.col-md-2.col-sm-1.col-xl-3
+        div.col-10.col-lg-6.col-md-8.col-sm-10.col-xl-6
+            each review in reviews
+                include ../elements/post
+        div.col-1.col-lg-3.col-md-2.col-sm-1.col-xl-3
+script.
+    function initializeLike(btn, liked) {
+        if (liked === null) window.localStorage.setItem(btn.id, 'false');
+        if (liked === true) {
+            btn.classList.add('liked');
+            switcher(btn, true);
+        }
+    }
+
+    function likeRequest(json, element, already_liked) {
+        $.ajax({
+            url: '/like',
+            dataType: "text",
+            async: false,
+            type: 'POST',
+            data: json,
+            success: function (data) {
+                counter_change(element, already_liked);
+                window.localStorage.removeItem('post_sent');
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log('failed');
+                window.localStorage.removeItem('post_sent');
+            }
+        });
+    }
+
+    function switcher(btn, state) {
+        state ? btn.classList.replace('fa-heart-o', 'fa-heart')
+            : btn.classList.replace('fa-heart', 'fa-heart-o');
+    }
+
+    function counter_change(element, already_liked) {
+        let btn = element.childNodes[1];
+        let amount = parseInt(element.attributes.getNamedItem('value').value);
+
+        if (already_liked) {
+            btn.classList.remove('liked');
+            amount--;
+        } else {
+            btn.classList.add('liked');
+            amount++;
+        }
+
+        element.attributes.getNamedItem('value').value = amount;
+        element.firstChild.textContent = `${amount} Likes `;
+        window.localStorage.setItem(btn.id, !already_liked);
+    }
+
+    function scrollToPost() {
+        if (window.localStorage.getItem('scrollToPost') !== null) {
+            const idx = window.localStorage.getItem('scrollToPost');
+            const post = document.getElementById(idx);
+            post.scrollIntoView({block: "center", behavior: "smooth"});
+            window.localStorage.removeItem('scrollToPost');
+        }
+    }
+
+    $(document).ready(function () {
+        scrollToPost(); // If user had wrote an post it will scroll down to it
+
+        for(let element of document.getElementsByClassName('likes')) {
+
+            let btn = element.childNodes[1];
+            initializeLike(btn, window.localStorage.getItem(btn.id) === 'true');
+
+            btn.addEventListener('mouseover', function (e) {
+                switcher(btn, !btn.classList.contains('liked'));
+            });
+
+            btn.addEventListener('mouseout', function (e) {
+                switcher(btn, btn.classList.contains('liked'));
+            });
+
+            btn.addEventListener('click', function (e) {
+                if(window.localStorage.getItem('post_sent') !== null) return;
+
+                const already_liked = btn.classList.contains('liked');
+                let value = parseInt(element.attributes.getNamedItem('value').value);
+                already_liked ? value-- : value++;
+
+                const data = {id: btn.id, likes: value};
+
+                window.localStorage.setItem('post_sent', 'true');
+                likeRequest(data, element, already_liked);
+            });
+        }
+    });

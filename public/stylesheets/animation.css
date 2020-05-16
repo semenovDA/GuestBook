@@ -1,0 +1,91 @@
+@keyframes fade-in {
+    from { background-color: rgba(255, 255, 255, 1); }
+    to { background-color: rgba(255, 255, 255, 0); }
+}
+
+.has-float-label {
+    display: block;
+    position: relative;
+}
+
+.has-float-label label {
+    position: absolute;
+    left: 5px;
+    top: -20px;
+    bottom: 10px;
+    cursor: text;
+    font-size: 80%;
+    opacity: 1;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+.has-float-label input {
+    font-size: inherit;
+    margin-top: 25px;
+}
+
+.has-float-label textarea {
+    font-size: inherit;
+    margin-top: 25px;
+}
+
+.has-float-label input::placeholder {
+    opacity: 1;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+.has-float-label textarea::placeholder {
+    opacity: 1;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+.has-float-label input:placeholder-shown:not(:focus)::placeholder, .has-float-label select:placeholder-shown:not(:focus)::placeholder {
+    opacity: 0;
+}
+.has-float-label textarea:placeholder-shown:not(:focus)::placeholder, .has-float-label select:placeholder-shown:not(:focus)::placeholder {
+    opacity: 0;
+}
+
+.has-float-label input:placeholder-shown:not(:focus) + *, .has-float-label select:placeholder-shown:not(:focus) + * {
+    font-size: 100%;
+    opacity: .5;
+    left: 5px;
+    top: 8px;
+}
+
+.has-float-label textarea:placeholder-shown:not(:focus) + *, .has-float-label select:placeholder-shown:not(:focus) + * {
+    font-size: 100%;
+    opacity: .5;
+    left: 5px;
+    top: 8px;
+}
+
+.has-float-label input:focus {
+    outline: none;
+    box-shadow: none !important;
+    border-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.has-float-label textarea:focus {
+    outline: none;
+    box-shadow: none !important;
+    border-color: rgba(0, 0, 0, 0.5);
+}
+
+.border-effect ~ .focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3399FF;
+    transition: 0.4s;
+}
+
+.border-effect:focus ~ .focus-border{
+    width: 100%; transition: 0.4s;
+}

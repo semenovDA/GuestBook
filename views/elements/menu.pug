@@ -1,0 +1,34 @@
+script.
+    $(function () {
+        $('a[data-toggle="tab"]').on('click', function (e) {
+            window.localStorage.setItem('activeTab', $(e.target).attr('href'));
+        });
+
+        var activeTab = window.localStorage.getItem('activeTab');
+        if(activeTab == null) activeTab = '#write-review';
+
+        if (activeTab) {
+            $('#pills-tab a[href="' + activeTab + '"]').tab('show');
+        }
+    });
+    $(document).ready(function () {
+        document.addEventListener("scroll", function () {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("pills-tab").classList.add("scrolled");
+                document.getElementById("pills-tab").classList.remove("un-scrolled");
+
+            } else {
+                document.getElementById("pills-tab").classList.add("un-scrolled");
+                document.getElementById("pills-tab").classList.remove("scrolled");
+            }
+        });
+    });
+
+ul#pills-tab.nav.sticky-top.navbar-light.nav-pills.mb-3(role='tablist').p-2.m-0
+    a.navbar-brand(href='').ml-2 GuestBook
+    li.nav-item
+        a#pills-review-tab.nav-link.py-2(data-toggle='tab' href='#write-review'
+            aria-controls='pills-review' aria-selected='true') Write review
+    li.nav-item
+        a#pills-reviews-tab.nav-link.py-2(data-toggle='tab' href='#reviews-list'
+            aria-controls='pills-reviews' aria-selected='false') All reviews

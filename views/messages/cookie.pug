@@ -1,0 +1,20 @@
+script.
+    $(document).ready(function () {
+        const alert = $('#cookie-alert');
+        if(window.localStorage.getItem('cookie-agreement') == null) alert.modal('show')
+        alert.on('hidden.bs.modal', function (e) {
+            window.localStorage.setItem('cookie-agreement', 'true');
+        })
+    });
+
+div.modal#cookie-alert.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true').p-0
+    .modal-dialog#cookies(role='document').modal-lg
+        .modal-content
+            .modal-body
+                .notice.d-flex.justify-content-between.align-items-center.row
+                    .cookie-text.col-xl-10.col-lg-10.col-md-9.col-sm-8
+                        | Our website uses cookies to improve your experience.
+                        | We'll assume you're ok with this, but you can opt-out if you wish.
+                    .buttons.col-xl-2.col-lg-2.col-md-3.col-sm-4
+                        a.btn.btn-success.btn-sm(href='#a' data-dismiss='modal') I accept
+                        a.btn.btn-secondary.btn-sm(href='#a' data-dismiss='modal') Learn More

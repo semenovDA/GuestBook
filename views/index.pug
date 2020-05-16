@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    include elements/menu
+    #pills-tabContent.tab-content
+        #write-review.tab-pane.fade(role='tabpanel' aria-labelledby='pills-reviews-tab')
+            div.pb-3.pt-3
+                include forms/review
+        #reviews-list.tab-pane.fade(role='tabpanel' aria-labelledby='pills-review-tab')
+            include elements/reviews

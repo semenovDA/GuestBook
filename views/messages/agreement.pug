@@ -1,0 +1,13 @@
+div.modal#agreement-alert.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true').p-0
+    .modal-dialog#agreement(role='document')
+        .modal-content
+            .modal-header
+                h4.modal-title Agreement
+                button(type="button" data-dismiss="modal" aria-label="Close").close
+                    span(aria-hidden="true").fa.fa-close
+            .modal-body
+                .notice.d-flex.justify-content-between.align-items-center.row
+                    .cookie-text.col-xl-10.col-lg-10.col-md-9.col-sm-8
+                        include:markdown-it agreement.md
+            .modal-footer
+                a.btn.btn-success.btn-block(href='#a' data-dismiss='modal') OK
