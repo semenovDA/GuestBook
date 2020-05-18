@@ -3,7 +3,7 @@ div.card-custom.text-left.mb-2
         - if(review.sender.toString() !== visitor._id.toString())
             div #{review.comment}
         - else
-            div(style="padding: 1rem 2.5rem 0rem 2rem; width: 100%") #{review.comment}
+            div(style="padding: 1rem 2rem 0rem 0rem; width: 100%") #{review.comment}
             div.edit-block
                 div(value = review.id).fa.fa-edit
 
