@@ -24,11 +24,6 @@ body {
     display: none;  /* Safari and Chrome */
 }
 
-div#sendButton > i {
-    left: 95%;
-    position: relative;
-}
-
 /*      Form    */
 [type="checkbox"] {
     width: 20px;

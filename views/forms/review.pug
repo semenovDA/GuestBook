@@ -6,7 +6,6 @@ script.
         $.map(unindexed_array, function (n, i) {
             indexed_array[n['name']] = n['value'];
         });
-
         return indexed_array;
     }
 
@@ -55,10 +54,10 @@ script.
 
 
     $(document).ready(function () {
-        if(window.localStorage.getItem('sent') === null)  window.localStorage.setItem('sent', 'false');
         $('#review-form').on('submit', function (e) {
             e.preventDefault();
             const json = getFormData($('#review-form')); // getting form-data
+            json['sender'] = '#{visitor._id}';
             loading_animation(); // showing loading animation
             sendReview(json); // sending a post request
         });
@@ -68,7 +67,7 @@ div.container
     div.row
         div.col-lg-3.col-sm-2
         div.col-lg-6.col-sm-8.rounded-lg.write-form
-            form#review-form
+            form#review-form(action='')
                 div.form-group.pb-3.pt-3
 
                     center
@@ -76,7 +75,7 @@ div.container
                         include ../elements/rating
 
                     div.has-float-label
-                        input.border-effect#inputName(type="text" name='sender' placeholder="Enter your name" required).form-control.mb-2
+                        input.border-effect#inputName(type="text" name='name' placeholder="Enter your name" required).form-control.mb-2
                         label(for="inputName") Name
                         span.focus-border
 
@@ -96,8 +95,7 @@ div.container
                         label(for="inputReview") Comment (write at last 50 words)
 
                     div.checkbox.mb-3
-                        input(type="checkbox" oninvalid="this.setCustomValidity('You should agree with our conditions')"
-                            required)#agreement-box.mr-2
+                        input(type="checkbox" required)#agreement-box.mr-2
                         label(for="agreement-box") I agree to the #{" "}
                             a(data-target="#agreement-alert" data-toggle="modal") Terms and Conditions
 
