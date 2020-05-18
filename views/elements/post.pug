@@ -1,6 +1,12 @@
 div.card-custom.text-left.mb-2
     div.row.card-comment
-        | #{review.comment}
+        - if(review.sender.toString() !== visitor._id.toString())
+            div #{review.comment}
+        - else
+            div(style="padding: 1rem 2.5rem 0rem 2rem; width: 100%") #{review.comment}
+            div.edit-block
+                div(value = review.id).fa.fa-edit
+
     div.row.card-details.align-items-start
         div.col-2.col-md-1.col-lg-1.col-sm-1.mr-4.mr-xl-5.mr-lg-5.mr-md-5.mr-sm-5
             - const style = `color: ${getRandomColor()};`;

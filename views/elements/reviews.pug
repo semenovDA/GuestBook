@@ -63,6 +63,31 @@ script.
         }
     }
 
+    function endEditing(comment, textarea) {
+        comment.firstChild.replaceWith(textarea.value);
+        window.localStorage.removeItem('editing');
+    }
+
+    function editRequest(json, comment, textarea) {
+        window.localStorage.removeItem('post_sent');
+        $.ajax({
+            url: '/edit',
+            dataType: "text",
+            async: false,
+            type: 'POST',
+            data: json,
+            success: function (data) {
+                endEditing(comment, textarea); // on success
+                window.localStorage.removeItem('post_sent');
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log('failed');
+                endEditing(comment, textarea); // on success
+                window.localStorage.removeItem('post_sent');
+            }
+        });
+    }
+
     $(document).ready(function () {
         scrollToPost(); // If user had wrote an post it will scroll down to it
 
@@ -86,10 +111,42 @@ script.
                 let value = parseInt(element.attributes.getNamedItem('value').value);
                 already_liked ? value-- : value++;
 
-                const data = {id: btn.id, likes: value};
+                const data = {id: btn.id, visitor_id: '#{visitor._id}', likes: value};
 
                 window.localStorage.setItem('post_sent', 'true');
                 likeRequest(data, element, already_liked);
             });
         }
+
+        $('.edit-block > div').on('click', function (e) { // id in (pug) post element
+            // if(window.localStorage.getItem('editing')) return;
+
+            const comment = e.target.parentNode.parentNode.firstChild;
+            const textarea = document.createElement('textarea');
+            textarea.style = `height: ${comment.offsetHeight}px;`;
+            textarea.classList.add('card-comment-textarea');
+            textarea.value = comment.firstChild.textContent;
+
+            textarea.onchange = function () {
+                window.localStorage.setItem('post_sent', 'true');
+
+                const json = {};
+                json['visitor_id'] = '#{visitor._id}';
+                json['post_id'] = e.target.attributes.getNamedItem('value').value;
+                json['comment'] = textarea.value;
+
+                editRequest(json, comment, textarea);
+            }
+
+            textarea.focusout = function() {
+                if(window.localStorage.getItem('post_sent')) return;
+                endEditing(comment, textarea);
+            }
+
+            comment.firstChild.replaceWith(textarea);
+            textarea.select();
+
+            window.localStorage.setItem('editing', 'true');
+        });
+
     });

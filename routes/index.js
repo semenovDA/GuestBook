@@ -61,8 +61,20 @@ router.post('/review', async function (req, res, next) {
 
 router.post('/like', async function (req, res, next) {
     try {
-        if(req.signedCookies.token === undefined) res.status(404).end();
+        if(req.signedCookies.token === req.body.visitor_id) res.status(404).end();
         await Reviews.findByIdAndUpdate(req.body.id, {likes: req.body.likes});
+        return res.status(200).end();
+    }
+    catch (e) {
+        console.error(e);
+        return res.status(500).end();
+    }
+});
+
+router.post('/edit', async function (req, res, next) {
+    try {
+        if(req.signedCookies.token !== req.body.visitor_id) res.status(404).end();
+        await Reviews.findByIdAndUpdate(req.body.post_id, {comment: req.body.comment});
         return res.status(200).end();
     }
     catch (e) {

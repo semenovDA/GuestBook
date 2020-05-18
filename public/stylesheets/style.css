@@ -101,10 +101,37 @@ body {
 }
 
 .card-comment {
-    font-family: "Microsoft Tai Le", lighter;
+    font-family: "Microsoft Tai Le", lighter, serif;
     color: #6B7188;
     padding: 1rem 2rem 0rem 2rem;
 }
+
+.card-comment-textarea {
+    width: 100%;
+}
+
+.edit-block {
+    position: absolute;
+    background: url("../images/elements/bookmark.png") no-repeat;
+    right: -15px;
+    height: 50px;
+    width: 50px;
+}
+
+.edit-block > div {
+    margin-left: 18px;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #000000;
+    transition: color 200ms;
+}
+
+.edit-block > div:hover {
+    color: #FFFFFF;
+    transition: color 200ms;
+}
+
+
 
 .card-date {
     color: #D5D6DB;
