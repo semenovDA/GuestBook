@@ -24,7 +24,7 @@ exports.getVisitor = async (visitor) => {
 
 exports.createVisitor = async (visitor) => {
     visitor._id = mongoose.Types.ObjectId(); // generate new id
-
+    console.log(visitor);
     return await new Promise(async (resolve, reject) => {
         Visitor.create(visitor, (err, record) => { // creating new Visitor
             if (err) return reject(err);
