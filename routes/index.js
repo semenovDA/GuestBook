@@ -1,4 +1,4 @@
-const uuid = require('uuid/dist/uuid-bin');
+const uuid = require('uuid-random');
 const express = require('express');
 const Reviews = require('../core/functions/reviews');
 const Review = require('../core/models/review.model');
