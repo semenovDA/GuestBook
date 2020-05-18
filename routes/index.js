@@ -1,14 +1,13 @@
 const express = require('express');
-// const uuid = require('uuid/v1');
+const uuid = require('uuid/v1');
 const Reviews = require('../core/functions/reviews');
 const Review = require('../core/models/review.model');
-const cookieParser = require('cookie-parser');
 const router = express.Router();
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
     const reviews = await Reviews.getReviews();
-    res.cookie('token', '123123', {signed: true});
+    res.cookie('token', uuid(), {signed: true});
     res.render('index', {title: 'GuestBook', reviews: reviews});
 });
 
