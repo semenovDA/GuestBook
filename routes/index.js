@@ -1,5 +1,4 @@
-import { v1 as uuid } from 'uuid'
-
+const uuid = require('uuid/dist/uuid-bin');
 const express = require('express');
 const Reviews = require('../core/functions/reviews');
 const Review = require('../core/models/review.model');
