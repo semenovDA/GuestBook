@@ -1,5 +1,5 @@
 const express = require('express');
-const uuid = require('uuid/v1');
+const uuid = require('uuid/dist/v1');
 const Reviews = require('../core/functions/reviews');
 const Review = require('../core/models/review.model');
 const router = express.Router();
