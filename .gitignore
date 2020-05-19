@@ -1,11 +1,3 @@
 
-.idea/codeStyles/codeStyleConfig.xml
-.idea/GuestBook.iml
-.idea/jsLibraryMappings.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/runConfigurations/bin_www.xml
-.idea/watcherTasks.xml
-.idea/workspace.xml
-
+.idea
 node_modules
