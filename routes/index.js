@@ -61,7 +61,7 @@ router.post('/review', async function (req, res, next) {
 
 router.post('/like', async function (req, res, next) {
     try {
-        if(req.signedCookies.token === req.body.visitor_id) res.status(404).end();
+        if(req.signedCookies.token !== req.body.visitor_id) res.status(404).end();
         await Reviews.findByIdAndUpdate(req.body.id, {likes: req.body.likes});
         return res.status(200).end();
     }

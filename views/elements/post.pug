@@ -9,15 +9,14 @@ div.card-custom.text-left.mb-2
 
     div.row.card-details.align-items-start
         div.col-2.col-md-1.col-lg-1.col-sm-1.mr-4.mr-xl-5.mr-lg-5.mr-md-5.mr-sm-5
-            - const style = `color: ${getRandomColor()};`;
-            div.fa.fa-5x.fa-user-circle(style = style)
+            div.fa.fa-5x.fa-user-circle(style = `color: ${getRandomColor()};`)
 
         div.col-5.col-md-7.col-xl-7.col-lg-6.col-sm-6
             -
                 function getRandomColor() {
                     var letters = '0123456789ABCDEF';
                     var color = '#';
-                    for (var i = 0; i < 6; i++) {
+                    for (let i = 0; i < 6; i++) {
                         color += letters[Math.floor(Math.random() * 12)];
                     }
                     return color;
