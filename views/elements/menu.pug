@@ -11,17 +11,40 @@ script.
             $('#pills-tab a[href="' + activeTab + '"]').tab('show');
         }
     });
+
     $(document).ready(function () {
         document.addEventListener("scroll", function () {
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                 document.getElementById("pills-tab").classList.add("scrolled");
+                document.getElementById("pills-user-post").classList.add("scrolled-icons");
                 document.getElementById("pills-tab").classList.remove("un-scrolled");
+                document.getElementById("pills-user-post").classList.remove("un-scrolled-icons");
 
             } else {
                 document.getElementById("pills-tab").classList.add("un-scrolled");
+                document.getElementById("pills-user-post").classList.add("un-scrolled-icons");
                 document.getElementById("pills-tab").classList.remove("scrolled");
+                document.getElementById("pills-user-post").classList.remove("scrolled-icons");
             }
         });
+
+        $('#pills-user-post').on('click', function () {
+            var activeTab = window.localStorage.getItem('activeTab');
+            if (activeTab !== '#reviews-list') {
+                window.localStorage.setItem('activeTab', '#reviews-list');
+                $('#pills-tab a[href="#reviews-list"]').tab('show');
+                var timer = setInterval(function () {
+                    clearInterval(timer);
+                    var post = document.getElementById('my-post');
+                    post.scrollIntoView({block: "center", behavior: "smooth"});
+                }, 500);
+            }
+            else {
+                var post = document.getElementById('my-post');
+                post.scrollIntoView({block: "center", behavior: "smooth"});
+            }
+        })
+
     });
 
 ul#pills-tab.nav.sticky-top.navbar-light.nav-pills.mb-3(role='tablist').p-2.m-0
@@ -32,3 +55,5 @@ ul#pills-tab.nav.sticky-top.navbar-light.nav-pills.mb-3(role='tablist').p-2.m-0
     li.nav-item
         a#pills-reviews-tab.nav-link.py-2(data-toggle='tab' href='#reviews-list'
             aria-controls='pills-reviews' aria-selected='false') All reviews
+    li.nav-item.ml-auto
+        div#pills-user-post.fa.fa-comment.un-scrolled-icons.py-2

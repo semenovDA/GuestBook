@@ -50,6 +50,13 @@ body {
   color: #00B7FF;
 }
 
+#pills-user-post {
+    color: white;
+    display: block;
+    padding: .5rem 1rem;
+    font-size: 25px;
+}
+
 .un-scrolled {
     background-color: rgba(255, 255, 255, 0.0);
     transition: background-color 300ms;
@@ -61,12 +68,35 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Nav bar brand */
+
 .un-scrolled > a {
     color: white !important;
 }
 
 .scrolled > a {
     color: black !important;;
+}
+
+/* For JS */
+.scrolled-icons {
+    transition: color 300ms;
+    color: black !important;
+}
+
+.scrolled-icons:hover {
+    transition: color 300ms;
+    color: dodgerblue !important;
+}
+
+.un-scrolled-icons {
+    color: white !important;
+    transition: color 300ms;
+}
+
+.un-scrolled-icons:hover {
+    color: #D5D6DB !important;
+    transition: color 300ms;
 }
 
 /*   Elements    */
@@ -220,6 +250,7 @@ span.likes {
 
 @media only screen and (max-width: 600px) {
 
+    /* For JS */
     .un-scrolled {
         background-color: rgba(255, 255, 255, 0.0);
         transition: background-color 300ms;
@@ -233,6 +264,7 @@ span.likes {
         width: 110%;
     }
 
+    /* Nav bar brand */
     .un-scrolled > a {
         color: white !important;
     }
@@ -241,11 +273,11 @@ span.likes {
         color: black !important;
     }
 
+    /* Review form */
     .write-form {
         background: linear-gradient(#D0E2F244, #062F4088);
         box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
         border: 1px solid #262120;
         width: 110%;
     }
-
 }
