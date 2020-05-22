@@ -219,11 +219,33 @@ span.likes {
 }
 
 @media only screen and (max-width: 600px) {
+
+    .un-scrolled {
+        background-color: rgba(255, 255, 255, 0.0);
+        transition: background-color 300ms;
+        width: 110%;
+    }
+
     .scrolled {
         background-color: rgba(255, 255, 255, 1);
         transition: background-color 300ms;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        margin-top: 10px;
-        width: 100%;
+        width: 110%;
     }
+
+    .un-scrolled > a {
+        color: white !important;
+    }
+
+    .scrolled > a {
+        color: black !important;
+    }
+
+    .write-form {
+        background: linear-gradient(#D0E2F244, #062F4088);
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+        border: 1px solid #262120;
+        width: 110%;
+    }
+
 }
