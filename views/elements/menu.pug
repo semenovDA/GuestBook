@@ -82,11 +82,11 @@ script.
 nav#menu.navbar.navbar-expand-lg.navbar-dark.bg-transparent.sticky-top
     a.navbar-brand(href='').ml-2 GuestBook
     button.navbar-toggler(type='button' data-trigger='#main_nav')
-        span.navbar-toggler-icon
-    #main_nav.navbar-collapse
+        span.fa.fa-navicon(style='color: white; font-size: 22px')
+    div#main_nav.navbar-collapse
         .offcanvas-header.mt-3
             button.btn.btn-outline-danger.btn-close.float-right  &times Close
-            h5.py-2.text-white Main navbar
+            div.py-4
         ul#pills-tab(role='tablist').navbar-nav
             li.nav-item
                 a#pills-review-tab.nav-link.py-2(data-toggle='tab' href='#write-review'

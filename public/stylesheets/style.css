@@ -46,7 +46,6 @@ body {
     padding: .5rem 1rem;
 }
 
-/*  Menu   */
 #pills-tab > li > a.active{
     display: block;
     padding: .5rem 1rem;
@@ -91,36 +90,24 @@ a.navbar-brand {
     color: black !important;
 }
 
-/* Nav bar items */
-
-
-/* Nav bar for moblie  */
-.offcanvas-header{ display:none; }
-
-@media (max-width: 992px) {
-    .offcanvas-header{ display:block; }
-    .navbar-collapse {
-        position: fixed;
-        top:0;
-        bottom: 0;
-        left: 100%;
-        width: 100%;
-        padding-right: 1rem;
-        padding-left: 1rem;
-        overflow-y: auto;
-        visibility: hidden;
-        background-color: black;
-        transition: visibility .2s ease-in-out, -webkit-transform .2s ease-in-out;
-    }
-    .navbar-collapse.show {
-        visibility: visible;
-        transform: translateX(-100%);
-    }
+/*  Nav bar icon */
+.scrolled > button > span.fa.fa-navicon {
+    color: black !important;
 }
+
+/* Nav bar items */
+.scrolled > div > ul > li > a {
+    color: #6B7188 !important;
+}
+
+.scrolled > div > ul > li > a.active {
+    color: white !important;
+}
+
 /* For JS */
 .scrolled-icons {
     transition: color 300ms;
-    color: black !important;
+    color: #6B7188 !important;
 }
 
 .scrolled-icons:hover {
@@ -199,7 +186,6 @@ a.navbar-brand {
     color: #FFFFFF;
     transition: color 200ms;
 }
-
 
 
 .card-date {
@@ -288,7 +274,6 @@ span.likes {
 }
 
 @media only screen and (max-width: 600px) {
-
     /* For JS */
     .un-scrolled {
         background-color: rgba(255, 255, 255, 0.0);
@@ -318,5 +303,57 @@ span.likes {
         box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
         border: 1px solid #262120;
         width: 110%;
+    }
+}
+
+/* Nav bar for moblie  */
+.offcanvas-header{ display:none; }
+@media (max-width: 992px) {
+    .offcanvas-header{ display:block; }
+    .navbar-collapse {
+        position: fixed;
+        top:0;
+        bottom: 0;
+        left: 100%;
+        width: 40%;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        overflow-y: auto;
+        visibility: hidden;
+        background-color: #FFFFFF;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+        transition: visibility .2s ease-in-out, -webkit-transform .2s ease-in-out;
+    }
+    .navbar-collapse.show {
+        visibility: visible;
+        transform: translateX(-100%);
+    }
+
+    .scrolled > div > ul > li > a {
+        color: black !important;
+    }
+
+    .scrolled-icons {
+        color: dodgerblue !important;
+    }
+
+    .un-scrolled-icons {
+        color: dodgerblue !important;
+    }
+
+    .un-scrolled-icons:hover {
+        color: dodgerblue !important;
+    }
+
+    .scrolled-icons:hover {
+        color: dodgerblue !important;
+    }
+
+    #pills-tab > li > a {
+        color: #6B7188 !important;
+    }
+
+    #pills-tab > li > a.active{
+        color: white !important;
     }
 }
