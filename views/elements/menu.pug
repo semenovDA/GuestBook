@@ -1,7 +1,24 @@
 script.
+    function closeBar() {
+        const menu = $(".navbar-collapse");
+        if (menu.hasClass('show')) menu.removeClass("show");
+
+        const body = $("body");
+        if (body.hasClass('offcanvas-active')) body.removeClass("offcanvas-active");
+    }
+
     $(function () {
         $('a[data-toggle="tab"]').on('click', function (e) {
-            window.localStorage.setItem('activeTab', $(e.target).attr('href'));
+            var activeTab = window.localStorage.getItem('activeTab');
+            const tab = $(e.target).attr('href');
+            window.localStorage.setItem('activeTab', tab);
+
+            const element = $('#pills-tab a[href="' + tab + '"]');
+            element.tab('show');
+            element[0].classList.add('active');
+
+            $('#pills-tab a[href="' + activeTab + '"]')[0].classList.remove('active');
+            closeBar();
         });
 
         var activeTab = window.localStorage.getItem('activeTab');
@@ -15,15 +32,17 @@ script.
     $(document).ready(function () {
         document.addEventListener("scroll", function () {
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                document.getElementById("pills-tab").classList.add("scrolled");
+                document.getElementById("menu").classList.add("scrolled");
                 document.getElementById("pills-user-post").classList.add("scrolled-icons");
-                document.getElementById("pills-tab").classList.remove("un-scrolled");
+                document.getElementById("menu").classList.remove("un-scrolled");
+                document.getElementById("menu").classList.remove("bg-transparent");
                 document.getElementById("pills-user-post").classList.remove("un-scrolled-icons");
 
             } else {
-                document.getElementById("pills-tab").classList.add("un-scrolled");
+                document.getElementById("menu").classList.add("un-scrolled");
+                document.getElementById("menu").classList.add("bg-transparent");
                 document.getElementById("pills-user-post").classList.add("un-scrolled-icons");
-                document.getElementById("pills-tab").classList.remove("scrolled");
+                document.getElementById("menu").classList.remove("scrolled");
                 document.getElementById("pills-user-post").classList.remove("scrolled-icons");
             }
         });
@@ -31,6 +50,7 @@ script.
         $('#pills-user-post').on('click', function () {
             var activeTab = window.localStorage.getItem('activeTab');
             if (activeTab !== '#reviews-list') {
+                $('#pills-tab a[href="' + activeTab + '"]')[0].classList.remove('active');
                 window.localStorage.setItem('activeTab', '#reviews-list');
                 $('#pills-tab a[href="#reviews-list"]').tab('show');
                 var timer = setInterval(function () {
@@ -43,17 +63,36 @@ script.
                 var post = document.getElementById('my-post');
                 post.scrollIntoView({block: "center", behavior: "smooth"});
             }
-        })
+            closeBar();
+        });
+
+        $("[data-trigger]").on("click", function () {
+            var trigger_id = $(this).attr('data-trigger');
+            $(trigger_id).toggleClass("show");
+            $('body').toggleClass("offcanvas-active");
+        });
+
+        $(".btn-close").click(function (e) {
+            $(".navbar-collapse").removeClass("show");
+            $("body").removeClass("offcanvas-active");
+        });
 
     });
 
-ul#pills-tab.nav.sticky-top.navbar-light.nav-pills.mb-3(role='tablist').p-2.m-0
+nav#menu.navbar.navbar-expand-lg.navbar-dark.bg-transparent.sticky-top
     a.navbar-brand(href='').ml-2 GuestBook
-    li.nav-item
-        a#pills-review-tab.nav-link.py-2(data-toggle='tab' href='#write-review'
-            aria-controls='pills-review' aria-selected='true') Write review
-    li.nav-item
-        a#pills-reviews-tab.nav-link.py-2(data-toggle='tab' href='#reviews-list'
-            aria-controls='pills-reviews' aria-selected='false') All reviews
-    li.nav-item.ml-auto
-        div#pills-user-post.fa.fa-comment.un-scrolled-icons.py-2
+    button.navbar-toggler(type='button' data-trigger='#main_nav')
+        span.navbar-toggler-icon
+    #main_nav.navbar-collapse
+        .offcanvas-header.mt-3
+            button.btn.btn-outline-danger.btn-close.float-right  &times Close
+            h5.py-2.text-white Main navbar
+        ul#pills-tab(role='tablist').navbar-nav
+            li.nav-item
+                a#pills-review-tab.nav-link.py-2(data-toggle='tab' href='#write-review'
+                    aria-controls='pills-review' aria-selected='true') Write review
+            li.nav-item
+                a#pills-reviews-tab.nav-link.py-2(data-toggle='tab' href='#reviews-list'
+                    aria-controls='pills-reviews' aria-selected='false') All reviews
+            li.nav-item
+                div#pills-user-post.fa.fa-comment.un-scrolled-icons.py-2

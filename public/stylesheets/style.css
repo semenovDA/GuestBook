@@ -40,7 +40,21 @@ body {
 }
 
 /*  Menu   */
-#pills-tab > a {
+#pills-tab > li > a {
+    margin: 5px;
+    font: 12pt Roboto;
+    padding: .5rem 1rem;
+}
+
+/*  Menu   */
+#pills-tab > li > a.active{
+    display: block;
+    padding: .5rem 1rem;
+    background-color: dodgerblue;
+    border-radius: 5px;
+}
+
+a.navbar-brand {
     font: 20pt Roboto;
     font-weight: bolder;
     color: white;
@@ -63,21 +77,46 @@ body {
 }
 
 .scrolled {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 1) !important;
     transition: background-color 300ms;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Nav bar brand */
-
 .un-scrolled > a {
     color: white !important;
 }
 
 .scrolled > a {
-    color: black !important;;
+    color: black !important;
 }
 
+/* Nav bar items */
+
+
+/* Nav bar for moblie  */
+.offcanvas-header{ display:none; }
+
+@media (max-width: 992px) {
+    .offcanvas-header{ display:block; }
+    .navbar-collapse {
+        position: fixed;
+        top:0;
+        bottom: 0;
+        left: 100%;
+        width: 100%;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        overflow-y: auto;
+        visibility: hidden;
+        background-color: black;
+        transition: visibility .2s ease-in-out, -webkit-transform .2s ease-in-out;
+    }
+    .navbar-collapse.show {
+        visibility: visible;
+        transform: translateX(-100%);
+    }
+}
 /* For JS */
 .scrolled-icons {
     transition: color 300ms;
