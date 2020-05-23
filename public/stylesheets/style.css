@@ -39,6 +39,13 @@ body {
     color: orange;
 }
 
+/*  Post   */
+#like-block {
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+}
+
 /*  Menu   */
 #pills-tab > li > a {
     margin: 5px;
@@ -278,14 +285,12 @@ span.likes {
     .un-scrolled {
         background-color: rgba(255, 255, 255, 0.0);
         transition: background-color 300ms;
-        width: 110%;
     }
 
     .scrolled {
         background-color: rgba(255, 255, 255, 1);
         transition: background-color 300ms;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        width: 110%;
     }
 
     /* Nav bar brand */
@@ -302,7 +307,11 @@ span.likes {
         background: linear-gradient(#D0E2F244, #062F4088);
         box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
         border: 1px solid #262120;
-        width: 110%;
+    }
+
+    #like-block {
+        position: absolute;
+        right: 0;
     }
 }
 
@@ -315,7 +324,7 @@ span.likes {
         top:0;
         bottom: 0;
         left: 100%;
-        width: 40%;
+        width: 50%;
         padding-right: 1rem;
         padding-left: 1rem;
         overflow-y: auto;

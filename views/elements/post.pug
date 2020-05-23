@@ -8,8 +8,8 @@ div.card-custom.text-left.mb-2
                 div(value = review.id id = 'my-post').fa.fa-edit
 
     div.row.card-details.align-items-start
-        div.col-2.col-md-1.col-lg-1.col-sm-1.mr-4.mr-xl-5.mr-lg-5.mr-md-5.mr-sm-5
-            div.fa.fa-user-circle(style = `font-size: 75px; color: ${getRandomColor()};`)
+        div.col-2.col-md-1.col-lg-1.col-sm-1.mr-5.mr-xl-5.mr-lg-5.mr-md-5.mr-sm-5
+            div.fa.fa-user-circle(style = `font-size: 80px; color: ${getRandomColor()};`)
 
         div.col-5.col-md-7.col-xl-7.col-lg-6.col-sm-6
             -
@@ -58,6 +58,6 @@ div.card-custom.text-left.mb-2
                     else
                         span.fa.fa-star-o(style = "color: orange")
 
-        div.col-4.col-md-3.col-xl-3.col-lg-3.col-sm-3.ml-xl-3.ml-1.ml-lg-5.ml-md-2.ml-sm-4.row
+        div#like-block.row
             span.likes(value=review.likes) #{review.likes} Likes #{"  "}
                 div(id = review.id).fa.fa-lg.fa-heart-o.card-like
